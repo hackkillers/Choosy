@@ -4,15 +4,12 @@
 /* universal */
 
 body {
-	padding-top: 60px;
+	padding-top: 20px;
 }
 
-section {
-	overflow: auto;
-}
-
-textarea {
-	resize: vertical;
+.navbar-default {
+	background-color: #ffffff;
+	border-color: #000000;
 }
 
 .center {
@@ -48,4 +45,11 @@ h2 {
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
+}
+
+/* logo */
+#logo {
+	float: left;
+	margin-right: 10px;
+	padding-top: 9px;
 }
