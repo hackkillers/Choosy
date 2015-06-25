@@ -7,12 +7,12 @@ class StaticPagesControllerTest < ActionController::TestCase
   end
 
   test "should get sign-in" do
-    get :sign-in
+    get :signin
     assert_response :success
   end
 
   test "should get sign-up" do
-    get :sign-up
+    get :signup
     assert_response :success
   end
 
