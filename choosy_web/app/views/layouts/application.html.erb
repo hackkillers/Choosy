@@ -10,11 +10,11 @@
 	<body>
 		<header class="navbar navbar-default">
 			<div class="container">
-				<%= link_to image_tag("choosy.jpg", size: "200x100", alt: "Choosy"), root_path, id: "logo" %>
+				<%= link_to image_tag("choosy.png", size: "200x100", alt: "Choosy"), root_path, id: "logo" %>
 				<nav>
 					<ul class="nav navbar-nav navbar-right">
-						<li><%= link_to "Sign Up", signup_path %></li>
-						<li><%= link_to "Sign In", signin_path %></li>
+						<li><%= link_to "Sign Up", signup_path, id: "link" %></li>
+						<li><%= link_to "Sign In", signin_path, id: "link" %></li>
 					</ul>
 				</nav>
 			</div>
