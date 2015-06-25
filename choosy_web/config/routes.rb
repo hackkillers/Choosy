@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'signup' => 'static_pages#signup'
   get 'static_pages/profile'
   get 'static_pages/newsfeed'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
