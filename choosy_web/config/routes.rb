@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root 'static_pages#main'
-  get 'signin' => 'static_pages#signin'
   get 'signup' => 'static_pages#signup'
+  get 'signin' => 'static_pages#signin'
+  post 'signin' => 'sessions#create'
+  delete 'signout' => 'sessions#destroy'
+
   get 'static_pages/profile'
   get 'static_pages/newsfeed'
   resources :users

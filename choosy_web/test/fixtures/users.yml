@@ -1,0 +1,4 @@
+yellow:
+  name: Hello Jello
+  email: hello@jello.com
+  password_digest: <%= User.digest('password') %>

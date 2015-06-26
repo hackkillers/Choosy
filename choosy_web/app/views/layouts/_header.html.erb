@@ -2,10 +2,18 @@
 	<div class="container">
 		<%= link_to image_tag("choosy.png", size: "200x100", alt: "Choosy"), root_path, id: "logo" %>
 		<nav>
-			<ul class="nav navbar-nav navbar-right">
-				<li><%= link_to "Sign Up", signup_path, id: "link" %></li>
-				<li><%= link_to "Sign In", signin_path, id: "link" %></li>
-			</ul>
+			<% if logged_in? %>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "Profile", user_url(current_user) %></li>
+					<li><%= link_to "Settings", '#' %></li>
+					<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+				</ul>
+			<% else %>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "Sign Up", signup_path, id: "link" %></li>
+					<li><%= link_to "Sign In", signin_path, id: "link" %></li>
+				</ul>
+			<% end %>
 		</nav>
 	</div>
 </header>
