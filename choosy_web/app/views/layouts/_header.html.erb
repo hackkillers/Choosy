@@ -4,9 +4,9 @@
 		<nav>
 			<% if logged_in? %>
 				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to "Profile", user_url(current_user) %></li>
-					<li><%= link_to "Settings", '#' %></li>
-					<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+					<li><%= link_to "Profile", user_url(current_user), id: "link" %></li>
+					<li><%= link_to "Settings", edit_user_path(current_user), id: "link" %></li>
+					<li><%= link_to "Sign out", signout_path, method: "delete", id: "link" %></li>
 				</ul>
 			<% else %>
 				<ul class="nav navbar-nav navbar-right">
