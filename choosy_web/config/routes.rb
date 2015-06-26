@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :images
+  resources :image_pairs
   root 'static_pages#main'
   get 'signin' => 'static_pages#signin'
   get 'signup' => 'static_pages#signup'

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  avatar: 
+  image_pair_id: 
+
+two:
+  avatar: 
+  image_pair_id: 

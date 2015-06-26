@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Votes first:</strong>
+  <%= @image_pair.votes_first %>
+</p>
+
+<p>
+  <strong>Votes second:</strong>
+  <%= @image_pair.votes_second %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @image_pair.user %>
+</p>
+
+<%= link_to 'Edit', edit_image_pair_path(@image_pair) %> |
+<%= link_to 'Back', image_pairs_path %>
