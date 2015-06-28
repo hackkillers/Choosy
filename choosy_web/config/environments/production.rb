@@ -4,6 +4,18 @@ Rails.application.configure do
 
   # Secret key setting for Heroku
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
+
+  # Amazon Web Services S3
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'orbitalchoosy', 
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    :url => ":s3_domain_url",
+    :path => "/:class/:attachment/:id_partition/:style/:filename"
+  }
   
   # Code is not reloaded between requests.
   config.cache_classes = true
