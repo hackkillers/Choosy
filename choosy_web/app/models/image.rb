@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
   belongs_to :image_pair
+  attr_accessor :image_pair_id
 
   has_attached_file :avatar
 

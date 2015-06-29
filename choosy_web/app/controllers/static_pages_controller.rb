@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def main
+    @image_pairs = ImagePair.all
   end
 
   def signin

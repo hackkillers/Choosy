@@ -1,5 +1,6 @@
 class ImagePairsController < ApplicationController
   before_action :set_image_pair, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :show, :edit, :update, :destroy]
 
   # GET /image_pairs
   # GET /image_pairs.json
@@ -10,6 +11,7 @@ class ImagePairsController < ApplicationController
   # GET /image_pairs/1
   # GET /image_pairs/1.json
   def show
+    @images = Image.where(image_pair_id: params[:id])
   end
 
   # GET /image_pairs/new
@@ -25,7 +27,12 @@ class ImagePairsController < ApplicationController
   # POST /image_pairs.json
   def create
     @image_pair = ImagePair.new(image_pair_params)
+    @image_pair.user_id = current_user.id
 
+    @first_image = Image.new(avatar: params[:image_pair][:first_image])
+    @second_image = Image.new(avatar: params[:image_pair][:second_image])
+    @first_image.save
+    @second_image.save
     respond_to do |format|
       if @image_pair.save
         format.html { redirect_to @image_pair, notice: 'Image pair was successfully created.' }
@@ -34,6 +41,7 @@ class ImagePairsController < ApplicationController
         format.html { render :new }
         format.json { render json: @image_pair.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
@@ -70,5 +78,13 @@ class ImagePairsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_pair_params
       params.require(:image_pair).permit(:votes_first, :votes_second, :user_id)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to signin_path
+      end
     end
 end

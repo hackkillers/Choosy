@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  resources :images
   resources :image_pairs
   root 'static_pages#main'
   get 'signup' => 'static_pages#signup'

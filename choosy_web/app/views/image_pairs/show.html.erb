@@ -15,5 +15,11 @@
   <%= @image_pair.user %>
 </p>
 
+<p>
+  <% @images.each do |image| %>
+  	<%= image_tag @image.avatar.url %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_image_pair_path(@image_pair) %> |
 <%= link_to 'Back', image_pairs_path %>

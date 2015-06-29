@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :votes_first %><br>
-    <%= f.number_field :votes_first %>
+    <%= f.label :caption %><br>
+    <%= f.text_field :caption %>
   </div>
   <div class="field">
-    <%= f.label :votes_second %><br>
-    <%= f.number_field :votes_second %>
+    <%= f.label :first_image %><br>
+    <%= f.file_field :first_image %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.label :second_image %><br>
+    <%= f.file_field :second_image %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :Confirm %>
   </div>
 <% end %>
