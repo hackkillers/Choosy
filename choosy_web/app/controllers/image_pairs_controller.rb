@@ -27,11 +27,12 @@ class ImagePairsController < ApplicationController
   # POST /image_pairs.json
   def create
     @image_pair = ImagePair.new(image_pair_params)
-    @image_pair.user_id = current_user.id
-
+    @image_pair.user = current_user
     @first_image = Image.new(avatar: params[:image_pair][:first_image])
     @second_image = Image.new(avatar: params[:image_pair][:second_image])
+    @first_image.image_pair = @image_pair
     @first_image.save
+    @second_image.image_pair = @image_pair
     @second_image.save
     respond_to do |format|
       if @image_pair.save

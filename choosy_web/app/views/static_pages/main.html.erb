@@ -1,8 +1,12 @@
 <% provide(:title, "Choosy") %>
 <div class="center jumbotron">
 	<% if logged_in? %>
-		<h1> Newsfeed!! </h1>
-		
+		<h1> Newsfeed!! (under maintainence) </h1>
+		<p>
+		<% @images.each do |image| %>
+  			<%= image_tag image.avatar.url %>
+  		<% end %>
+  		</p>
 	<% else %>
 		<h1>Choosy - Main Page</h1>
 		<p>
