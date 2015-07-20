@@ -1,6 +1,6 @@
 class ImagePairsController < ApplicationController
   before_action :set_image_pair, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy]
 
   # GET /image_pairs
   # GET /image_pairs.json
@@ -79,13 +79,5 @@ class ImagePairsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_pair_params
       params.require(:image_pair).permit(:votes_first, :votes_second, :user_id)
-    end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to signin_path
-      end
     end
 end

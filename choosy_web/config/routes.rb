@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 
   resources :image_pairs
+  resources :users
+
   root 'static_pages#main'
   get 'signup' => 'static_pages#signup'
   get 'signin' => 'static_pages#signin'
-  post 'signin' => 'sessions#create'
-  delete 'signout' => 'sessions#destroy'
 
   get 'static_pages/profile'
   get 'static_pages/newsfeed'
-  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

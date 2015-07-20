@@ -1,6 +1,6 @@
 <% provide(:title, "Choosy") %>
 <div class="center jumbotron">
-	<% if logged_in? %>
+	<% if user_signed_in? %>
 		<h1> Newsfeed!! (under maintainence) </h1>
 		<p>
 		<% @images.each do |image| %>

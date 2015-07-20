@@ -2,17 +2,17 @@
 	<div class="container">
 		<%= link_to image_tag("choosy.png", size: "200x100", alt: "Choosy"), root_path, id: "logo" %>
 		<nav>
-			<% if logged_in? %>
+			<% if user_signed_in? %>
 				<ul class="nav navbar-nav navbar-right">
 					<li><%= link_to "Create Post", new_image_pair_path , id: "link" %></li>
 					<li><%= link_to "Profile", user_url(current_user), id: "link" %></li>
-					<li><%= link_to "Settings", edit_user_path(current_user), id: "link" %></li>
-					<li><%= link_to "Sign out", signout_path, method: "delete", id: "link" %></li>
+					<li><%= link_to "Settings", edit_user_registration_path, id: "link" %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, id: "link" %></li>
 				</ul>
 			<% else %>
 				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to "Sign Up", signup_path, id: "link" %></li>
-					<li><%= link_to "Sign In", signin_path, id: "link" %></li>
+					<li><%= link_to "Sign Up", new_user_registration_path, id: "link" %></li>
+					<li><%= link_to "Sign In", new_user_session_path, id: "link" %></li>
 				</ul>
 			<% end %>
 		</nav>
