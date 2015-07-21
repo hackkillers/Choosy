@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	def show
+		@image_pairs = current_user.image_pairs
 	end
 
 	def create

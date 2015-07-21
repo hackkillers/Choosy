@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   def main
-    @images = Image.all    
+    if user_signed_in?
+      @user_history = current_user.voting_history
+      @image_pairs = ImagePair.order(created_at: :desc)
+    end
   end
 end

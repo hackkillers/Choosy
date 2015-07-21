@@ -2,6 +2,34 @@ class ImagePairsController < ApplicationController
   before_action :set_image_pair, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :show, :edit, :update, :destroy]
 
+  def votefirst
+    @image_pair = ImagePair.find(params[:image_pair_id])
+    # vote counts are intiliased as nil
+    if @image_pair.votes_first?
+      @image_pair.votes_first += 1
+    else
+      @image_pair.votes_first = 1
+    end
+    @image_pair.save
+    current_user.voting_history.push(@image_pair.id)
+    current_user.save
+    redirect_to root_path
+  end
+
+  def votesecond
+    @image_pair = ImagePair.find(params[:image_pair_id])
+    # vote counts are intiliased as nil
+    if @image_pair.votes_second?
+      @image_pair.votes_second += 1
+    else
+      @image_pair.votes_second = 1
+    end
+    @image_pair.save
+    current_user.voting_history.push(@image_pair.id)
+    current_user.save
+    redirect_to root_path
+  end
+
   # GET /image_pairs
   # GET /image_pairs.json
   def index
@@ -36,6 +64,8 @@ class ImagePairsController < ApplicationController
     @second_image.save
     respond_to do |format|
       if @image_pair.save
+        current_user.voting_history.push(current_user.image_pairs.last.id)
+        current_user.save
         format.html { redirect_to @image_pair, notice: 'Image pair was successfully created.' }
         format.json { render :show, status: :created, location: @image_pair }
       else

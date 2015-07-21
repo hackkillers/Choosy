@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
 
-  resources :image_pairs
+  resources :image_pairs do
+    get 'votefirst'
+    get 'votesecond'
+  end
   resources :users
 
   root 'static_pages#main'

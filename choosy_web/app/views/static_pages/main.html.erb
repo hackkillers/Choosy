@@ -1,10 +1,31 @@
 <% provide(:title, "Choosy") %>
-<div class="center jumbotron">
+<div class="center jumbotron container">
 	<% if user_signed_in? %>
-		<h1> Newsfeed!! (under maintainence) </h1>
+		<h1> Newsfeed!!</h1>
 		<p>
-		<% @images.each do |image| %>
-  			<%= image_tag image.avatar.url %>
+		<% @image_pairs.each do |pair| %>
+			<h2><%= pair.caption %></h2>
+			<br>
+			<div class="row">
+				<div class="col-xs-12 col-md-8 col-md-offset-2">
+				<% if @user_history.include?(pair.id.to_s) %>
+					<%= image_tag(pair.images.first.avatar.url, size: 
+					"280x180") %>
+					<%= image_tag(pair.images.last.avatar.url, size: 
+					"280x180") %>
+				<% else %>
+					<%= link_to image_pair_votefirst_path(image_pair_id: pair.id) do %>
+		  				<%= image_tag(pair.images.first.avatar.url, size: 
+					"280x180") %>
+		  			<% end %>
+
+		  			<%= link_to image_pair_votesecond_path(image_pair_id: pair.id) do %>
+		  			<%= image_tag(pair.images.last.avatar.url, size: 
+					"280x180") %>
+		  			<% end %>
+				<% end %>
+				</div>
+			</div>
   		<% end %>
   		</p>
 	<% else %>
