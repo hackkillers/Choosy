@@ -4,12 +4,7 @@ class ImagePairsController < ApplicationController
 
   def votefirst
     @image_pair = ImagePair.find(params[:image_pair_id])
-    # vote counts are intiliased as nil
-    if @image_pair.votes_first?
-      @image_pair.votes_first += 1
-    else
-      @image_pair.votes_first = 1
-    end
+    @image_pair.votes_first += 1
     @image_pair.save
     current_user.voting_history.push(@image_pair.id)
     current_user.save
@@ -18,12 +13,7 @@ class ImagePairsController < ApplicationController
 
   def votesecond
     @image_pair = ImagePair.find(params[:image_pair_id])
-    # vote counts are intiliased as nil
-    if @image_pair.votes_second?
-      @image_pair.votes_second += 1
-    else
-      @image_pair.votes_second = 1
-    end
+    @image_pair.votes_second += 1
     @image_pair.save
     current_user.voting_history.push(@image_pair.id)
     current_user.save
