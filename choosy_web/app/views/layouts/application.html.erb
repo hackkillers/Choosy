@@ -1,21 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
   	<title><%= yield(:title) %></title>
+
   	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  	<!-- Bootstrap Core CSS -->
+    <link href="/app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/app/assets/stylesheets/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
   	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   	<%= csrf_meta_tags %>
+
   	<%= render 'layouts/shim' %>
 	</head>
 	
-	<body>
+	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
 		<%= render 'layouts/header' %>
-		<div class="container">
-			<% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
 			<%= yield %>
 		<!--	<%= debug(params) if Rails.env.development? %> -->
-		</div>
+
+		<!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Choosy 2015</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/app/assets/javascripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/app/assets/javascripts/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/app/assets/javascripts/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/app/assets/javascripts/grayscale.js"></script>
+
 	</body>
 </html>
