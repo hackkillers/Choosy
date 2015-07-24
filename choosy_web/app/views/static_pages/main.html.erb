@@ -3,35 +3,33 @@
 		<section id="about" class="container content-section text-center">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-					<h2> Newsfeed!!!</h2>
-					<p>
+					<h2>Newsfeed!!!</h2>
 					<% @image_pairs.each do |pair| %>
-						<h2><%= pair.caption %></h2>
+						<%= pair.caption %>
+            <br>
+						<%= image_tag(pair.images.first.avatar.url, size: "280x180") %>
+						<%= image_tag(pair.images.last.avatar.url, size: "280x180") %>
 						<br>
-						<div class="row">
-							<div class="col-xs-12 col-md-8 col-md-offset-2">
-							<% if @user_history.include?(pair.id.to_s) %>
-								<%= image_tag(pair.images.first.avatar.url, size: 
-								"280x180") %>
-								<%= image_tag(pair.images.last.avatar.url, size: 
-								"280x180") %>
-							<% else %>
-								<%= link_to image_pair_votefirst_path(image_pair_id: pair.id) do %>
-					  				<%= image_tag(pair.images.first.avatar.url, size: 
-								"280x180") %>
-					  			<% end %>
+						<% if !@user_history.include?(pair.id.to_s) %>
+							<%= link_to image_pair_votefirst_path(image_pair_id: pair.id) do %>
+				  			<i class="fa fa-thumbs-o-up fa-lg"></i> THIS
+				  		<% end %>
 
-					  			<%= link_to image_pair_votesecond_path(image_pair_id: pair.id) do %>
-					  			<%= image_tag(pair.images.last.avatar.url, size: 
-								"280x180") %>
-					  			<% end %>
-							<% end %>
-							</div>
-						</div>
+				  		OR
+
+			  			<%= link_to image_pair_votesecond_path(image_pair_id: pair.id) do %>
+				  			THAT <i class="fa fa-thumbs-o-up fa-lg"></i>
+					  	<% end %>
+            <br>
+						<% end %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
 			  	<% end %>
-			  	</p>
-			  	</div>
-        </div>
+			  </div>
+       </div>
     </section>
 
 

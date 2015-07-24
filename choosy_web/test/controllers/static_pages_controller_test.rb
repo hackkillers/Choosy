@@ -25,5 +25,4 @@ class StaticPagesControllerTest < ActionController::TestCase
     get :newsfeed
     assert_response :success
   end
-
 end

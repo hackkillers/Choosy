@@ -8,7 +8,7 @@ class ImagePairsController < ApplicationController
     @image_pair.save
     current_user.voting_history.push(@image_pair.id)
     current_user.save
-    redirect_to root_path
+    redirect_to root_path(anchor: @image_pair)
   end
 
   def votesecond
@@ -17,7 +17,7 @@ class ImagePairsController < ApplicationController
     @image_pair.save
     current_user.voting_history.push(@image_pair.id)
     current_user.save
-    redirect_to root_path
+    redirect_to root_path(anchor: @image_pair)
   end
 
   # GET /image_pairs
@@ -56,7 +56,7 @@ class ImagePairsController < ApplicationController
       if @image_pair.save
         current_user.voting_history.push(current_user.image_pairs.last.id)
         current_user.save
-        format.html { redirect_to @image_pair, notice: 'Image pair was successfully created.' }
+        format.html { redirect_to user_url(current_user), notice: 'Image pair was successfully created.' }
         format.json { render :show, status: :created, location: @image_pair }
       else
         format.html { render :new }
@@ -98,6 +98,6 @@ class ImagePairsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_pair_params
-      params.require(:image_pair).permit(:votes_first, :votes_second, :user_id)
+      params.require(:image_pair).permit(:votes_first, :votes_second, :user_id, :caption)
     end
 end

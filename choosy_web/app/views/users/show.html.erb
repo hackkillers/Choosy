@@ -6,17 +6,36 @@
       	<%= image_tag(current_user.avatar, size: "120x120") %>
       	<br>
       	<br>
-				<h2> My Posts </h2>
-				<p>
+				<h2>My Posts</h2>
 				<% @image_pairs.each do |pair| %>
-					<h2><%= pair.caption %></h2>
+					<%= pair.caption %>
 					<br>
-						<%= image_tag(pair.images.first.avatar.url, size: 
-						"280x180") %>
-						<%= image_tag(pair.images.last.avatar.url, size: 
-						"280x180") %>
+					<%= image_tag(pair.images.first.avatar.url, size: "280x180") %>
+					<%= image_tag(pair.images.last.avatar.url, size: "280x180") %>
+					<br>
+					<br>
+					<% @votes_first = show_first(pair) %>
+					<% @votes_second = show_second(pair) %>
+					<div class="progress col-lg-6 col-lg-offset-3">
+						<% if @votes_first == 0 and @votes_second == 0 %>
+							<div class="progress-bar" style="width: 0%">
+	    				</div>
+						<% else %>
+	    				<div class="progress-bar progress-bar-info" style="width: <%= @votes_first %>%">
+	        			<%= show_first(pair)%>%
+	    				</div>
+	    				<div class="progress-bar progress-bar-success" style="width: <%= @votes_second %>%">
+	        			<%= show_second(pair)%>%
+	    				</div>
+    				<% end %>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 				<% end %>
-				</p>
       </div>
   </div>
 </section>
