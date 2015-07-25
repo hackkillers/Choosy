@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def show
-		@image_pairs = current_user.image_pairs
+		@image_pairs = current_user.image_pairs.order(created_at: :desc)
 	end
 
 	def create

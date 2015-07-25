@@ -3,13 +3,25 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+#image_pair_first_image {
+    display: inline-block;
+    background-color: white;
+    width: calc(80% - 22px);
+}
+
+#image_pair_second_image {
+    display: inline-block;
+    background-color: white;
+    width: calc(80% - 22px);
+}
+
 .centre {
     margin-left: auto;
     margin-right: auto;
 }
 
 .field {
-    color: black;    
+    color: black;
 }
 
 .field label {
@@ -22,6 +34,16 @@
 
 .field em {
     color: white;
+}
+
+input::-moz-selection {
+    color: white;
+    background: black;
+}
+
+input::selection {
+    color: white;
+    background: black;
 }
 
 body {
@@ -373,15 +395,13 @@ footer p {
 }
 
 ::-moz-selection {
-    text-shadow: none;
-    background: #fcfcfc;
-    background: rgba(255,255,255,.2);
+    color: black;
+    background: white;
 }
 
 ::selection {
-    text-shadow: none;
-    background: #fcfcfc;
-    background: rgba(255,255,255,.2);
+    color: black;
+    background: white;
 }
 
 img::selection {
