@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
         user.email = auth.info.email
         user.avatar = open(auth.info.image.gsub("http", "https"))
         user.password = Devise.friendly_token[0,20]
+        user.nickname = auth.info.first_name + auth.info.last_name
       end
   end
 end

@@ -3,6 +3,10 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+.margins {
+    margin: 0 0 10px;
+}
+
 #image_pair_first_image {
     display: inline-block;
     background-color: white;
@@ -63,9 +67,15 @@ h1,
 h2,
 h3,
 h4,
-h5,
+h5 {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
 h6 {
-    margin: 0 0 35px;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
@@ -193,7 +203,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(<%= asset_data_uri '210H.jpg' %>) no-repeat bottom center scroll;
+    background: url(<%= asset_data_uri 'intro_bg.jpg' %>) no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
