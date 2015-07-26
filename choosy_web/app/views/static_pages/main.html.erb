@@ -37,6 +37,30 @@
           <% end %>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <ul class="comments">
+            <% pair.comments.each do |comment| %>
+              <li><%= "#{comment.user.nickname}: #{comment.body}" %></li>
+            <% end %>
+            <br>
+            <% @image_pair = pair %>
+            <%= form_for([@image_pair, @comment]) do |f| %>
+              <%= f.hidden_field :image_pair_id %>
+               
+                  <div class="field">
+                    <%= f.text_field :body, :placeholder => "Add a comment" %>
+                  </div>
+                  <div class="actions btn">
+                    <%= f.submit :Submit %>
+                  </div>
+               
+            <% end %>
+            </ul>
+          </div>
+        </div>
+
         <br>
         <br>
         <br>

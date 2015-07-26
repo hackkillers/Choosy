@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
          
 	has_many :image_pairs, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

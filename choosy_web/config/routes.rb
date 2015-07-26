@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :registrations => "users/registrations" }
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :image_pairs do
     get 'votefirst'
     get 'votesecond'
+    resources :comments
   end
   resources :users
 
@@ -51,8 +53,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

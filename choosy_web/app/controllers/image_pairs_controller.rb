@@ -98,6 +98,6 @@ class ImagePairsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_pair_params
-      params.require(:image_pair).permit(:votes_first, :votes_second, :user_id, :caption)
+      params.require(:image_pair).permit(:votes_first, :votes_second, :user_id, :caption, comments_attributes: [:body])
     end
 end
