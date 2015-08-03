@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   # Validate filename
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
-	
+	validates :nickname, length: { maximum: 15 }
+
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
