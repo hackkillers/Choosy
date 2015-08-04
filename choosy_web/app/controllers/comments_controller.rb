@@ -24,15 +24,16 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @pair = ImagePair.find(params[:image_pair_id])
+    @image_pair = ImagePair.find(params[:image_pair_id])
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.image_pair = @pair
+    @comment.image_pair = @image_pair
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to root_path(anchor: @pair)}
+        format.html { redirect_to root_path(anchor: @image_pair.id) }
         format.json { render :show, status: :created, location: @comment }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -57,9 +58,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @image_pair = @comment.image_pair
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to root_path(anchor: @image_pair.id) }
       format.json { head :no_content }
     end
   end
