@@ -3,6 +3,8 @@ class Image < ActiveRecord::Base
   validates :image_pair, :presence => true
 
   has_attached_file :avatar
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  
+  validates_attachment :avatar, :presence => true,
+    :content_type => { :content_type => "image/jpeg" }
 
 end

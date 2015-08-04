@@ -10,8 +10,12 @@ class User < ActiveRecord::Base
 	has_many :image_pairs, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
-  has_attached_file :avatar
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :avatar, :default_url => "/default-avatar-4.jpg"
+
+  # Validate content type
+  validates_attachment_content_type :avatar, :content_type => /\Aimage/
+  # Validate filename
+  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
 	validates :nickname, length: { maximum: 15 }
 
