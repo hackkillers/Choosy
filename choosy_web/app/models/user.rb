@@ -12,10 +12,9 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :default_url => "/default-avatar-4.jpg"
 
-  # Validate content type
-  validates_attachment_content_type :avatar, :content_type => /\Aimage/
-  # Validate filename
-  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
+  validates_attachment_content_type :avatar, 
+                                    :content_type => /^image\/(png|jpg|jpeg)/,
+                                    :message => 'only (png/jpg/jpeg) images'
 
 	validates :nickname, length: { maximum: 15 }
 

@@ -23,15 +23,15 @@
 	  </div>
 
 		<div class="row">
-	    <div class="col-xs-6 col-sm-4 col-sm-offset-2">
-		  <%= image_tag(pair.images.first.avatar.url, :class => "img-responsive img-rounded") %>
-	    </div>
+		    <div class="col-xs-6 col-sm-4 col-sm-offset-2">
+			  <%= image_tag(pair.images.first.avatar.url, :class => "img-responsive img-rounded") %>
+		    </div>
 
-	    <div class="col-xs-6 col-sm-4">
-	    <%= image_tag(pair.images.last.avatar.url, :class => "img-responsive img-rounded") %>
+		    <div class="col-xs-6 col-sm-4">
+		    <%= image_tag(pair.images.last.avatar.url, :class => "img-responsive img-rounded") %>
+		    </div>
 	    </div>
-	  </div>
-	  <br>
+	    <br>
 
 		<% @votes_first = show_first(pair) %>
 		<% @votes_second = show_second(pair) %>
@@ -48,6 +48,22 @@
 				</div>
 			<% end %>
 		</div>
+
+		<div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <ul class="comments">
+            <% pair.comments.each do |comment| %>
+              <li><%= "#{comment.user.nickname}: #{comment.body}" %>
+              <% if comment.user_id == current_user.id %>
+                | <%= link_to "delete comment", image_pair_comment_path(pair.id, comment.id), :method => :delete %>
+              <% end %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+
+
 	  <br>
 	  <br>
 	  <br>

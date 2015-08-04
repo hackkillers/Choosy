@@ -49,19 +49,24 @@ class ImagePairsController < ApplicationController
     @first_image = Image.new(avatar: params[:image_pair][:first_image])
     @second_image = Image.new(avatar: params[:image_pair][:second_image])
     @first_image.image_pair = @image_pair
-    @first_image.save
     @second_image.image_pair = @image_pair
-    @second_image.save
-    respond_to do |format|
-      if @image_pair.save
-        current_user.voting_history.push(current_user.image_pairs.last.id)
-        current_user.save
-        format.html { redirect_to user_url(current_user), notice: 'Image pair was successfully created.' }
-        format.json { render :show, status: :created, location: @image_pair }
-      else
-        format.html { render :new }
-        format.json { render json: @image_pair.errors, status: :unprocessable_entity }
-      end
+    if !@first_image.valid? || !@second_image.valid?
+      render :new
+      return
+    else 
+      @first_image.save
+      @second_image.save
+      respond_to do |format|
+        if @image_pair.save
+          current_user.voting_history.push(current_user.image_pairs.last.id)
+          current_user.save
+          format.html { redirect_to user_url(current_user), notice: 'Image pair was successfully created.' }
+          format.json { render :show, status: :created, location: @image_pair }
+        else
+          format.html { render :new }
+          format.json { render json: @image_pair.errors, status: :unprocessable_entity }
+        end
+    end
 
     end
   end
