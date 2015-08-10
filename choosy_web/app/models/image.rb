@@ -8,4 +8,6 @@ class Image < ActiveRecord::Base
                                     :content_type => /^image\/(png|jpg|jpeg)/,
                                     :message => 'only (png/jpg/jpeg) images'
 
+   validates_attachment_size :avatar,  :in => 0..20.kilobytes      
+
 end

@@ -1,3 +1,4 @@
+<%= provide(:title, "Choosy | Create Post") %>
 <section id="about" class="container content-section text-center">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
@@ -5,28 +6,29 @@
     	<%= form_for(@image_pair) do |f| %>
 			  <% if @image_pair.errors.any? %>
 			    <div id="error_explanation">
-			      <h2><%= pluralize(@image_pair.errors.count, "error") %> prohibited this image_pair from being saved:</h2>
+			      <h3><%= pluralize(@image_pair.errors.count, "error") %> prohibited this post from being created:</h3>
 			      <ul>
 			      <% @image_pair.errors.full_messages.each do |message| %>
-			        <li><%= message %></li>
+			        <li><i><%= message %></i></li>
 			      <% end %>
 			      </ul>
 			    </div>
+			    <br>
 			  <% end %>
 
 			  <div class="field">
 			    <%= f.label :caption %><br>
 			    <%= f.text_field :caption %>
 			  </div>
-			  <br>
 			  <div class="field">
-			    <%= f.label :first_image %><i> (cannot be blank and only accepts jpg/jpeg/png)</i><br>
+			    <%= f.label :first_image %><br>
 			    <%= f.file_field :first_image %>
 			  </div>
 			  <div class="field">
-			    <%= f.label :second_image %><i> (cannot be blank and only accepts jpg/jpeg/png)</i><br>
+			    <%= f.label :second_image %><br>
 			    <%= f.file_field :second_image %>
 			  </div>
+			  <br>
 			  <div class="actions">
 			    <%= f.submit :Confirm %>
 			  </div>
