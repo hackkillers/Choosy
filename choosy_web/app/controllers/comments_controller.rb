@@ -33,9 +33,9 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to root_path(anchor: @image_pair.id) }
         format.json { render :show, status: :created, location: @comment }
-        format.js
       else
-        format.html { render :new }
+        format.html { 
+        redirect_to root_path(anchor: @image_pair.id) }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

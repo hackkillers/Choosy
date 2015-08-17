@@ -51,6 +51,10 @@ class ImagePairsController < ApplicationController
     @first_image.image_pair = @image_pair
     @second_image.image_pair = @image_pair
     if !@first_image.valid? || !@second_image.valid?
+      if @image_pair.caption.empty?
+        @image_pair.errors.add(:caption, "is empty")
+      end
+      @image_pair.errors.add(:base, "Image fields only accepts jpg/jpeg/png below 20kb")
       render :new
       return
     else 
