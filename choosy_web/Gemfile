@@ -47,6 +47,9 @@ gem 'omniauth-facebook'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# Use Puma as web server
+gem 'puma'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
